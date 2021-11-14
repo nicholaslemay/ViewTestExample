@@ -1,0 +1,19 @@
+@model ExampleWebApplication.Players.HockeyPlayer
+
+@{
+    var player = Model;
+    var extraData = ViewData["extraData"];
+}
+
+<div>
+    <span id="playerNumber">@player.Number</span>
+    <span id="playerName" data-for-player-number="@player.Number">@player.Name</span>
+    <a id="link" asp-controller="players" asp-action="show" asp-route-id="@player.Number">Link to here</a>
+</div>
+
+
+<div id="partial">
+    @await Html.PartialAsync("~/Players/Views/_PlayerStats.cshtml")
+</div>
+
+<div id="extraData">@extraData</div>
